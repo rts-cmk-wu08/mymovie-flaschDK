@@ -1,0 +1,28 @@
+    :root {
+        --primaryColorDark: #ffffff;
+        --secondaryColorDark: #ffffff ;
+        --tertiaryColorDark: #FFC319;
+        --backgroundColorDark: #000000;
+
+        --primaryColorLight: #000000;
+        --secondaryColorLight: #AAA9B1;
+        --tertiaryColorLight: #FFC319;
+        --backgroundColorLight: #Ffffff;
+}
+
+body,html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.dark {
+    color: var(--primaryColorDark);
+    background: var(--backgroundColorDark)
+}
+
+.light {
+    color: var(--primaryColorLight);
+    background: var(--backgroundColorLight)
+}
+
