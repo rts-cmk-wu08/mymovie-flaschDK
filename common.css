@@ -1,0 +1,34 @@
+:root {
+  --primaryColorDark: #ffffff;
+  --secondaryColorDark: #ffffff;
+  --tertiaryColorDark: #ffc319;
+  --backgroundColorDark: #000000;
+
+  --primaryColorLight: #000000;
+  --secondaryColorLight: #aaa9b1;
+  --tertiaryColorLight: #ffc319;
+  --backgroundColorLight: #ffffff;
+}
+
+body,
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.dark {
+  color: var(--primaryColorDark);
+  background: var(--backgroundColorDark);
+}
+
+.light {
+  color: var(--primaryColorLight);
+  background: var(--backgroundColorLight);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
