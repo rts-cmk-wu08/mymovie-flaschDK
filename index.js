@@ -1,16 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* fetch(
-    "https://api.themoviedb.org/3/search/movie?api_key=a1a8dc71b4398d4b969d426c918b84d8&query=tarzan&page=4"
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    }); */
+  // Get movies now playing
   fetch(
-    "https://api.themoviedb.org/3/search/movie/?api_key=a1a8dc71b4398d4b969d426c918b84d8&query=bourne"
+    "https://api.themoviedb.org/3/movie/now_playing/?api_key=a1a8dc71b4398d4b969d426c918b84d8"
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      data.results.forEach((movie) => {
+        console.log(movie);
+        const imageURL =
+          "https://image.tmdb.org/t/p" + "/w185" + movie.poster_path;
+        console.log(imageURL);
+        
+      });
+    });
+  // Get popular movies
+  fetch(
+    "https://api.themoviedb.org/3/movie/popular/?api_key=a1a8dc71b4398d4b969d426c918b84d8"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      data.results.forEach((movie) => {
+        console.log(movie);
+        const imageURL =
+          "https://image.tmdb.org/t/p" + "/w185" + movie.poster_path;
+        console.log(imageURL);
+      });
     });
 });
