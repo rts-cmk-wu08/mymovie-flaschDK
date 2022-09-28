@@ -1,4 +1,4 @@
-// Function til at lave skelet til indmaden i index.html
+// Function to create bascis structure in index.html
 function createStructure(element) {
   let nowPlaying = document.createElement("section");
   let popular = document.createElement("section");
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "https://image.tmdb.org/t/p" + "/w185" + movie.poster_path;
         movieTag.src = imageURL;
         movieTag.id = movie.id;
-        console.log(imageURL);
       });
       playingTag.addEventListener("click", (event) => {
         console.log(event.target);
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "https://image.tmdb.org/t/p" + "/w185" + movie.poster_path;
         movieTag.src = imageURL;
         movieTag.id = movie.id;
-        console.log(imageURL);
         popularTag.addEventListener("click", (event) => {
           console.log(event.target);
           if (event.target.id)
