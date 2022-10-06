@@ -2,14 +2,18 @@
 function createStructure(element) {
   let nowPlaying = document.createElement("section");
   let popular = document.createElement("section");
+  let nowContainer = document.createElement("div");
+  let popContainer = document.createElement("div");
   const playingTitle = document.createElement("H2");
   const popularTitle = document.createElement("H2");
-  nowPlaying.className = "nowplaying";
-  popular.className = "popular";
+  nowContainer.className = "nowplaying";
+  popContainer.className = "popular";
   playingTitle.innerHTML = "Now Showing";
   popularTitle.innerHTML = "Popular";
   nowPlaying.appendChild(playingTitle);
   popular.appendChild(popularTitle);
+  nowPlaying.appendChild(nowContainer);
+  popular.appendChild(popContainer);
   element.appendChild(nowPlaying);
   element.appendChild(popular);
 }
@@ -23,19 +27,26 @@ document.addEventListener("DOMContentLoaded", () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      let playingTag = document.querySelector(".nowplaying");
+      let nowContainer = document.querySelector(".nowplaying");
       data.results.forEach((movie) => {
-        const movieTag = document.createElement("img");
-        playingTag.appendChild(movieTag);
+        const movieTag = document.createElement("article");
+        const posterTag = document.createElement("img");
+        const nameTag = document.createElement("H2");
+        movieTag.appendChild(posterTag);
+        movieTag.appendChild(nameTag);
+        nowContainer.appendChild(movieTag);
         const imageURL =
           "https://image.tmdb.org/t/p" + "/w185" + movie.poster_path;
-        movieTag.src = imageURL;
+        posterTag.src = imageURL;
+        nameTag.innerHTML = movie.title;
         movieTag.id = movie.id;
-      });
-      playingTag.addEventListener("click", (event) => {
-        console.log(event.target);
-        if (event.target.id)
-          window.location.href = "detail.html" + "?id=" + event.target.id;
+        posterTag.id = movie.id;
+        nameTag.id = movie.id;
+        nowContainer.addEventListener("click", (event) => {
+          console.log(event.target);
+          if (event.target.id)
+            window.location.href = "detail.html" + "?id=" + event.target.id;
+        });
       });
     });
   // Get popular movies
@@ -44,15 +55,22 @@ document.addEventListener("DOMContentLoaded", () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      let popularTag = document.querySelector(".popular");
+      let popContainer = document.querySelector(".popular");
       data.results.forEach((movie) => {
-        const movieTag = document.createElement("img");
-        popularTag.appendChild(movieTag);
+        const movieTag = document.createElement("article");
+        const posterTag = document.createElement("img");
+        const nameTag = document.createElement("H2");
+        movieTag.appendChild(posterTag);
+        movieTag.appendChild(nameTag);
+        popContainer.appendChild(movieTag);
         const imageURL =
           "https://image.tmdb.org/t/p" + "/w185" + movie.poster_path;
-        movieTag.src = imageURL;
+        posterTag.src = imageURL;
+        nameTag.innerHTML = movie.title;
         movieTag.id = movie.id;
-        popularTag.addEventListener("click", (event) => {
+        posterTag.id = movie.id;
+        nameTag.id = movie.id;
+        popContainer.addEventListener("click", (event) => {
           console.log(event.target);
           if (event.target.id)
             window.location.href = "detail.html" + "?id=" + event.target.id;

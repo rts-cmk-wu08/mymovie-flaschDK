@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(document.documentElement.classList);
-  console.log(window.matchMedia("(prefers-color-scheme: dark)"));
-
+  // dark mode setting: Hvis den er sat tidligere i local storage, bevares den.
+  // Hvis ikke, tages den fra hvad browseren er sat til, og gemmes i local storage.
   let darkMode = localStorage.getItem("mymoviedarkmode");
-  console.log(darkMode);
   if (darkMode === null) {
     if (window.matchMedia("(prefers-color-scheme: dark)").checked) {
       document.body.classList.add("dark");
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (darkMode === "true") darkToggle.checked = true;
   else darkToggle.checked = false;
   darkToggle.addEventListener("click", (event) => {
-    console.log(document.body);
     if (event.target.checked) {
       document.body.classList.remove("light");
       document.body.classList.add("dark");
